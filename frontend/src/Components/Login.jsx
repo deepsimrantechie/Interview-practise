@@ -5,13 +5,13 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [currState, setCurrState] = useState("Login"); // Use this to toggle between login and register
-  const [error, setError] = useState(null); // To store any error messages
+  const [currState, setCurrState] = useState("Login");
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const url = " http://localhost:4000"; // Replace with your backend URL
+    const url = " http://localhost:4000";
     const newUrl =
       currState === "Login"
         ? `${url}/api/user/login`
@@ -28,14 +28,14 @@ const Login = () => {
 
       if (response.data.success) {
         localStorage.setItem("token", response.data.token);
-        // Optionally handle success (like redirecting the user or updating the state)
-        alert("Login successful!"); // Temporary success alert
+
+        alert("Login successful!");
       } else {
-        setError(response.data.message); // Display error message
+        setError(response.data.message);
       }
     } catch (err) {
       console.error(err);
-      setError("An error occurred. Please try again."); // Generic error message
+      setError("An error occurred. Please try again.");
     }
   };
 
@@ -46,7 +46,6 @@ const Login = () => {
         {error && (
           <div className="text-red-500 text-center mb-4">{error}</div>
         )}{" "}
-        {/* Display error message */}
         <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -76,7 +75,6 @@ const Login = () => {
             Submit
           </button>
         </form>
-        {/* Toggle between login and register (optional) */}
         <div className="text-center mt-4">
           {currState === "Login" ? (
             <span>

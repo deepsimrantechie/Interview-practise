@@ -8,6 +8,9 @@ const App = () => {
     <div>
       <Navbar />
       <Login />
+      <h1 className="flex flex-col items-center text-center text-3xl">
+        Upload here images and comments
+      </h1>
       <Upload />
     </div>
   );
